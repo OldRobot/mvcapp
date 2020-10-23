@@ -4,6 +4,9 @@
 //My config.php is not uploaded as it listed in my ginore file.
 
 
+//please chage the  RewriteBase /mvcapp/public  in  public/.htaccess
+//mvcapp is the name of my root folder for the appliucation
+
 //DB Params - you need your own parameters here
 define('DB_HOST', 'localhost');
 define('DB_USER','root');
