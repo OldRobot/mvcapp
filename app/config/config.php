@@ -1,5 +1,5 @@
 <?php
-//changes have been made
+
 //DB Params
 define('DB_HOST', 'localhost');
 define('DB_USER','root');
