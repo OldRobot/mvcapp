@@ -10,7 +10,8 @@
 
             
             //will get data here from model
-            $data = ['title' => 'welcome',
+            $data = ['title' => 'SharePosts',
+                     'description' => 'Simple social network using PHP MVC framework.'
                     ];
 
            
@@ -21,7 +22,8 @@
 
 
         public function about(){
-            $data = ['title' => 'about us'];
+            $data = ['title' => 'about us',
+                     'description' => 'App to share posts with other users.'];
             $this->view('pages/about', $data);
         }
 
