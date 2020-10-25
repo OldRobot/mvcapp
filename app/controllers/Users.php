@@ -1,7 +1,11 @@
 <?php
 
 class Users extends Controller{
-    public function __constructor(){
+    public function __construct(){
+        //check the models folder for a file caller User.php
+        $this->userModel = $this->model('User');
+
+
 
     }
 
@@ -28,6 +32,11 @@ class Users extends Controller{
         //validate email
         if(empty($data['email'])){
             $data['email_err'] = 'Please enter email';
+        }else{
+            //check email in db
+            if($this->userModel->findUserByEmail($data['email'])){
+                $data['email_err'] = 'Email is already taken';
+            }
         }
 
          //validate name
@@ -35,7 +44,7 @@ class Users extends Controller{
             $data['name_err'] = 'Please enter name';
         }
 
-         //validate email
+         //validate password
         if(empty($data['password'])){
             $data['password_err'] = 'Please enter password';
         }elseif (strlen($data['password'])<6) {
@@ -55,13 +64,16 @@ class Users extends Controller{
         if(empty($data['email_err']) && empty($data['name_err']) && empty($data['password_err']) 
             && empty($data['confirm_password_err'])){
                 //validated
-                die('SUCCESS');
+                //now we can register the user
+
+                //hash the pasword
         }else{
             //load the view with the errors
             $this->view('users/register',$data);
         }
 
-        // got to 3.03 going to next valdiate the login.
+       
+        
 
 
     }else{
@@ -87,6 +99,39 @@ class Users extends Controller{
         //check for post
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             //process form
+            $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        //initilize data
+        $data = [
+            
+            'email' => trim($POST['email']),
+            'password' => trim($POST['password']),
+            'email_err' => '',
+            'password_err' => '',
+        ];
+
+        //validate email is filled in
+        if(empty($data['email'])){
+            $data['email_err'] = 'Please enter email';
+        }
+
+
+        //validate email is filled in
+        if(empty($data['password'])){
+            $data['password_err'] = 'Please enter a password';
+        }
+
+
+        
+         //make sure errors are empty
+         if(empty($data['email_err'])  && empty($data['password_err'])){
+             //validated
+             die('SUCCESS');
+     }else{
+         //load the view with the errors
+         $this->view('users/login',$data);
+     }
+
 
         }else{
             //load the form
