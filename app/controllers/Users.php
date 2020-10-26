@@ -67,6 +67,16 @@ class Users extends Controller{
                 //now we can register the user
 
                 //hash the pasword
+                $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
+
+                //register the ueser
+                if($this->userModel->register($data)){
+                    redirect('users/login');
+                }else{
+                    die('Something went wrong');
+                };
+
+
         }else{
             //load the view with the errors
             $this->view('users/register',$data);
