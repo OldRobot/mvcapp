@@ -3,6 +3,7 @@
 require_once 'config/config.php';
 //load helpers
 require_once 'helpers/url_helper.php';
+require_once 'helpers/session_helper.php';
 
 //auto load core Libraries
 //library files must match the class names
