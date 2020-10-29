@@ -151,7 +151,10 @@ class Users extends Controller{
 
              if($loggedInUser){
                  //create the session variables
-                 die('successfuly logged in');
+                 $this->createUserSession($loggedInUser);
+
+
+
              }else{
                  //rerender form with errror
                  //as this is false
@@ -180,4 +183,25 @@ class Users extends Controller{
         }
     
         }
+    //allow a user to be logged in
+    public function createUserSession($user){
+        $_SESSION['user_id'] = $user->id;
+        $_SESSION['user_email'] = $user->email;
+        $_SESSION['user_name'] = $user->name;
+        redirect('posts');
+
+    }
+
+    //log a user out
+    public function logout(){
+        unset($_SESSION['user_id']);
+        unset($_SESSION['user_name']);
+        unset($_SESSION['user_email']);
+        session_destroy();
+        redirect('users/login');
+    }
+
+
+   
+
 }

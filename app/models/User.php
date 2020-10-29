@@ -35,6 +35,7 @@
             if(password_verify($password,$hashed_password)){
                 //match passoword and hashed password
                 //user can be logged in, return user
+                //returns all data
                 return $row;
             }else{
                 //does not match
