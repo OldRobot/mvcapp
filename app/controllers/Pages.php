@@ -7,7 +7,9 @@
 
         //default method
         public function index(){
-
+            if(isLoggedIn()){
+                redirect('posts');
+            }
             
             //will get data here from model
             $data = ['title' => 'SharePosts',
