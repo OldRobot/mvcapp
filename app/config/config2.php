@@ -3,7 +3,7 @@
 //The file should be renamed to config.php
 //My config.php is not uploaded as it listed in my ginore file.
 
-//hello
+//hello this is a test
 //please chage the  RewriteBase /mvcapp/public  in  public/.htaccess
 //mvcapp is the name of my root folder for the appliucation
 
