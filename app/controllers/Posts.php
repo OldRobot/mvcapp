@@ -86,6 +86,28 @@
             $this->view('posts/show', $data);
         }
 
+        public function delete($id){
+            //get the existing post
+            $post = $this->postModel->getPostById($id);
+            //check for owner - if the logged in user
+            //is the owner of the post
+            if($post->user_id != $_SESSION['user_id']){
+                //redirect them
+                redirect('posts');
+            }
+            //the delete request id posted by a button in a form.
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                if($this->postModel->deletePost($id)){
+                    flash('post-message', 'Post Removed');
+                    redirect('posts');
+                }else{
+                    die('Something Went wrong.');
+                }
+            }else{
+                redirect('posts');
+            }
+        }
+
     
 
         public function edit($id){
@@ -96,6 +118,7 @@
                 $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
                 
                 $data =[
+                    'id' => $id,
                     'title' => trim($_POST['title']),
                     'body' => trim($_POST['body']),
                     'user_id' => $_SESSION['user_id'],
