@@ -23,7 +23,7 @@
         }
 
         public function addPost($data){
-              //create the prepared statment
+              //create the prepared statment  
               $this->db->query('INSERT INTO posts(title, user_id,body) VALUES(:title, :user_id, :body)');
 
               //bind the values

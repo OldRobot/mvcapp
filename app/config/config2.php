@@ -6,6 +6,7 @@
 //hello this is a test
 //please chage the  RewriteBase /mvcapp/public  in  public/.htaccess
 //mvcapp is the name of my root folder for the appliucation
+//need a ☕
 
 //DB Params - you need your own parameters here
 define('DB_HOST', 'localhost');
