@@ -1,0 +1,26 @@
+{
+    "testname" : "Number ISGA",
+    "questions" : [
+        {
+            "question" : "What is 3 + 5",
+            "answers" : [
+                8,
+                "eight"
+            ]
+        },
+        {
+            "question" : "What is 6 - 5",
+            "answers" : [
+                1,
+                "one"
+            ]
+        },
+        {
+            "question" : "What is 3 * 5",
+            "answers" : [
+                15,
+                "fifteen"
+            ]
+        }
+    ]
+}
